@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>  
+<style> 
+div#quizquestions
+		{ 	 
+			border-radius: 20px; <!-- -->
+			float:left; 
+			clear-right; 
+			border:#fb69c2 10px solid; 
+			padding:10px 20px 20px 20px; 
+			background-color: #026892; 
+			width:520px; height:140px;
+			position: fixed;
+			top: 480px;
+			left: 350px;
+		}
+div#Footer_Display
+		{ 	width:100px; 
+			border-radius: 20px;
+			height:365px; 
+			float: left; 
+			border:#fb69c2 10px solid; 
+			padding:10px 20px 20px 20px; 
+			background-color: #026892; 
+			position:fixed;
+			left: 945px;
+			top: 255px;
+		}
+
+div#certificate
+		{ 	 
+			float: left; 
+			position:fixed;
+			left: 350px;
+			top: 750px;
+		}
+		
+		
+div#formdiv
+		{ 
+			float: left;
+			border-radius: 20px;
+			border:#fb69c2 10px solid; 
+			padding:10px 20px 20px 20px; 
+			background-color: #026892; 
+			width: 200px;
+			top:250px;
+			position: fixed;
+			left: 350px;
+		}
+div#ImageDiv
+		{ 
+			border-radius: 90px;
+			padding: 0px 0px 0px 0px; 
+			background-color: null; 
+			width: 185px;
+			height:314px;
+			top:90px;
+			position: fixed;
+			left: 675px;
+		}
+#header_display
+		{
+			color: #fb69c2;
+			position: fixed;
+			left: 650px;
+			top: 410px;
+		}
+body 
+		{ 
+			background:url(BG.gif) 
+			#000000 no-repeat left top; 
+			background-size: 100%;
+		}
+#printBtn
+		{
+			position: fixed;
+			left:1115px;
+			top:620px;
+		}
+#printtxt
+		{
+			color:#fb69c2; 
+			position: fixed;
+			top: 630px;
+			left: 1180px;
+		}
+</style> 
+<script src="quiz.js"></script>
+<script type="text/javascript">
+
+	function validate() // function to validate the form details
+	{
+		if (document.login.name.value == '') // if the inputbox is empty then run the folowig code.
+		{
+			alert("Please fill in a Name ")// show an alert box requiring the user to enter an name.
+			return false; // return false if conditions above aren't met.
+		}
+		
+		if (document.login.number.value == '')  // if the inputbox is empty then run the folowig code.
+		{
+			alert("Please fill in a Number ")// show an alert box requiring the user to enter a number.
+			return false; // return false if conditions above aren't met.
+		}
+		
+		if (document.login.email.value == '') // if the inputbox is empty then run the folowig code.
+		{
+			alert("Please fill in a Email ")// show an alert box requiring the user to enter an email.
+			return false; // return false if conditions above aren't met.
+		}
+		
+	if (document.login.number.value && document.login.name.value && document.login.email.value)// if all the boxes have a value then do the following code.
+		{
+			document.getElementById('quizquestions').style.visibility = "visible"; // set the named div to be visible
+	 		document.getElementById('Footer_Display').style.visibility = "visible";// set the named div to be visible
+			document.getElementById('ImageDiv').style.visibility = "visible";// set the named div to be visible
+			document.getElementById('header_display').style.visibility = "visible";// set the named div to be visible
+			document.getElementById('formdiv').style.visibility = "hidden";// hide the named div
+			document.getElementById('btndiv').style.visibility = "visible";// set the named div to be visible
+			
+		} 	
+		return false; // if none of the above conditions are met return false.
+	}
+	
+	function printContent(el) // function to print a a page ( or specified element )
+	{ 
+		var restorepage = document.body.innerHTML; 
+		var printcontent = document.getElementById(el).innerHTML; 
+		document.body.innerHTML = printcontent; 
+		window.print(); 
+		document.body.innerHTML = restorepage; 
+		
+		
+	}
+</script>	
+</head>
+<body>
+<script>
+</script>
+<div id="formdiv">
+<form name="login" method="post" action="" onsubmit="return validate();">
+	
+	<p>Name : <input type="text" name="name" size="15" id="first_name"/> </p>
+	<p>Number : <input type="text" name="number" size="13"id="id_number"/> </p>
+	<p>Email : <input type="email" name="email" size="15"id="email_"/> </p>
+	<br>
+	<input type="submit" name="submit" value="submit"/>
+</form>	
+</div>
+	<br>
+<h1 id="header_display" style="visibility: hidden"></h1> 
+	
+<div id="quizquestions" style="visibility: hidden;"></div>
+	
+<div id="ImageDiv" style="visibility: hidden;"><img src="QM2.gif" alt="Question Mark" height="314" width="185"></div>
+	
+<div id="Footer_Display" style="visibility: hidden;"></div>
+
+<div id="btndiv" style="visibility: hidden;">
+	
+		<button id="printBtn" onclick="printContent('certificate')">	
+		<img src="IP.png" alt="Printer" height="40" width="40">	
+		</button>		<h3 id="printtxt">Print Results</h3>
+	
+</div>
+
+<div  id ="certificate" style="width:800px; height:500px; padding:20px; text-align:center; border: 10px solid #fff ;">
+<div id ="subcert" style="width:750px; height:450px; padding:20px; text-align:center; border: 5px solid #fff ;">
+       <span id ="certtitle" style="font-size:50px; color:white; font-weight:bold; visibility: visible;">Certificate of Completion</span>
+       <br><br>
+       <span id ="certcongrat"style="font-size:25px;color:white visibility: visible;"><i>Congratulations</i></span>
+       <br><br>
+       <span id="certname" style="font-size:30px;color:white; visibility: visible;"><b></b></span><br/><br/>
+       <span id ="certQC" style="font-size:25px;color:white; visibility: visible;"><i>Quiz Complete</i></span> <br/><br/>
+       <span id ="certWD" style="font-size:25px;color:white; visibility: visible;">Well done  </span> <br/><br/>
+       <span id="pre"style="font-size:20px;color:white; visibility: visible;"> <b></b></span> <br/><br/><br/><br/>
+       
+    
+      
+</div>
+</div>
+</body> 
+</html>
